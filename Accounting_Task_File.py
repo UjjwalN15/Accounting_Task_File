@@ -30,9 +30,9 @@ def main():
 
 def login():
     try:
-        data_file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_data.txt","r")
+        data_file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_data.txt","r")
     except FileNotFoundError:
-        open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_data.txt","w").close()
+        open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_data.txt","w").close()
     user_data = data_file.read()
     data_file.close()
     if user_data == "":
@@ -76,9 +76,9 @@ def register():
         print("Password must be at least 6 characters")
         register()
     try:
-        data_file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_data.txt","r")
+        data_file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_data.txt","r")
     except FileNotFoundError:
-        open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_data.txt","w").close()
+        open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_data.txtt","w").close()
     user_existing_data = data_file.read()
     data_file.close()
     list_user_existing_data = user_existing_data.split("-")
@@ -112,12 +112,12 @@ def register():
                 time.sleep(2)
                 user_data = {register_username:register_password}
                 json_user_data = json.dumps(user_data)
-                file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_data.txt", "a")
+                file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_data.txt", "a")
                 file.write(json_user_data + "-")
                 file.close()
                 user_balance_data = {register_username : "0"}
                 json_user_balance_data = json.dumps(user_balance_data)
-                file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_balance_data.txt", "a")
+                file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_balance_data.txt", "a")
                 file.write(json_user_balance_data + "-")
                 file.close()
                 time.sleep(2)
@@ -158,7 +158,7 @@ def Accounting(username):
         print("Please enter a valid choice. Please try again.")
         Accounting(username)
 def Check_balance(username):
-    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_balance_data.txt", "r")
+    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_balance_data.txt", "r")
     balance_data = file.read()
     file.close()
     list_balance_data = balance_data.split("-")
@@ -168,7 +168,7 @@ def Check_balance(username):
             dict_balance_data = json.loads(datas)
             if username in dict_balance_data:
                 balance += int(dict_balance_data.get(username))
-    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_Withdraw_data.txt", "r")
+    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_Withdraw_data.txt", "r")
     withdraw_record = file.read()
     file.close()
     list_withdraw_record = withdraw_record.split("-")
@@ -186,7 +186,7 @@ def Add_balance(username):
     add_balance = int(input("Enter the balance to add to your account: "))
     add_balance_data = {username : add_balance}
     json_add_balance_data = json.dumps(add_balance_data)
-    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_balance_data.txt", "a")
+    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_balance_data.txt", "a")
     file.write(json_add_balance_data+"-")
     file.close()
     time.sleep(1)
@@ -194,7 +194,7 @@ def Add_balance(username):
     Accounting(username)
     
 def Withdraw_balance(username):
-    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_balance_data.txt", "r")
+    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_balance_data.txt", "r")
     balance_data = file.read()
     file.close()
     list_balance_data = balance_data.split("-")
@@ -204,7 +204,7 @@ def Withdraw_balance(username):
             dict_balance_data = json.loads(datas)
             if username in dict_balance_data:
                 balance += int(dict_balance_data.get(username))
-    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_Withdraw_data.txt", "r")
+    file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_Withdraw_data.txt", "r")
     withdraw_record = file.read()
     file.close()
     list_withdraw_record = withdraw_record.split("-")
@@ -232,12 +232,12 @@ def Withdraw_balance(username):
     else:
         user_withdraw_data = {username:user_withdraw_balance}
         json_user_withdraw_data = json.dumps(user_withdraw_data)
-        file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_Withdraw_data.txt", "a")
+        file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_Withdraw_data.txt", "a")
         file.write(json_user_withdraw_data + "-")
         file.close()
         time.sleep(1)
         print(f"{user_withdraw_balance} Successfully withdrawn.")
-        file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_User_Withdraw_data.txt", "r")
+        file = open("C:/Users/prajw/OneDrive/Desktop/Python Programming/Accounting_Task_File/Accounting_Task_User_Withdraw_data.txt", "r")
         withdraw_balance = file.read()
         file.close()
         list_withdraw_balance = withdraw_balance.split("-")
